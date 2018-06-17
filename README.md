@@ -5,6 +5,7 @@ Features
 ========
 
 - Create 1 million cube with OpenGL 4.1 using Instancing
+- Using .NET Core 2.1 (+ OpenTK.NETCore, System.Drawing.Common)
 
 Checked environment
 ===================
