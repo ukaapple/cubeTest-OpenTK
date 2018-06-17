@@ -1,11 +1,11 @@
-cubeTest-OpenTK
-===============
+OpenTK test with OpenGL 4.1 using Instancing
+============================================
 
 Features
 ========
 
 - Create 1 million cube with OpenGL 4.1 using Instancing, and display fps.
-- Using .NET Core 2.1 (+ OpenTK.NETCore, System.Drawing.Common)
+- Using .NET Core 2.1 (OpenTK.NETCore, System.Drawing.Common)
 
 Checked environment
 ===================
@@ -35,7 +35,7 @@ ln -s /opt/X11/include/X11 /usr/local/include/X11
 ```
 
 libgdiplus
-(Errors and warnings may occured. You need to respond flexibly.)
+(Errors and warnings may occured. You need to respond flexibly)
 
 ```
 $ brew install autoconf 
