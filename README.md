@@ -4,7 +4,7 @@ cubeTest-OpenTK
 Features
 ========
 
-- Create 1 million cube with OpenGL 4.1 using Instancing
+- Create 1 million cube with OpenGL 4.1 using Instancing, and display fps.
 - Using .NET Core 2.1 (+ OpenTK.NETCore, System.Drawing.Common)
 
 Checked environment
