@@ -34,6 +34,7 @@ ln -s /opt/X11/include/X11 /usr/local/include/X11
 ```
 
 libgdiplus
+(Errors and warnings may occured. You need to respond flexibly.)
 
 ```
 $ brew install autoconf 
