@@ -26,6 +26,18 @@ $ sudo apt-get update
 $ sudo apt-get install libgdiplus
 ```
 
+libgbm-dev
+
+```
+$ sudo apt-get install libgbm-dev
+```
+
+libEGL
+
+```
+$ sudo apt-get install libegl1-mesa-dev
+```
+
 - for mac
 
 X11 from https://www.xquartz.org and create symbolic link
