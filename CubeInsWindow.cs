@@ -168,6 +168,8 @@ namespace cubeTest_OpenTK
             _modelviewMatrix = Matrix4.CreateTranslation(0.0f, 0.0f, 0.0f); // Matrix4.CreateRotationX(-MathHelper.PiOver4) * Matrix4.CreateTranslation(0.0f, 0.0f, 3.0f);
 
             _mvpMatrixLocation = GL.GetUniformLocation(_programID, "mvpMatrix");
+            
+            GL.ClearColor(Color4.Green);
         }
 
         private int CreateProgram(string vertSrc, string fragSrc) {
@@ -400,7 +402,6 @@ namespace cubeTest_OpenTK
 
             // Prepare for background
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            GL.ClearColor(Color4.Green);
 
             // draw
             GL.DrawElementsInstanced(PrimitiveType.TriangleStrip, _idxArys.Length - 1, DrawElementsType.UnsignedInt, IntPtr.Zero, _xBlocks * _yBlocks * _zBlocks);

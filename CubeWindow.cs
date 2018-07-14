@@ -195,7 +195,7 @@ namespace cubeTest_OpenTK
             return textureID;
         }
 
-        private void makeData(int xs, int ys, int zs, int xm, int ym, int zm, float xd, float yd, float zd, ref float[] vboV, ref float[] vboT, ref uint[] indices) {
+        private void makeData(int xs, int ys, int zs, int xm, int ym, int zm, float xd, float yd, float zd, ref float[] vertArys, ref float[] texArys, ref uint[] idxArys) {
 
             int num = (xm - xs + 1) * (ym - ys + 1) * (zm - zs + 1);
             
@@ -207,9 +207,9 @@ namespace cubeTest_OpenTK
                             + IDX_PER_CUBE * num * System.Runtime.InteropServices.Marshal.SizeOf(default(uint));
             Console.WriteLine("memory usage = " + String.Format("{0:#,0}", memorySize) + " bytes");
 
-            _vertArys = new float[VERT_PER_CUBE * num];
-            _texArys = new float[TEX_PER_CUBE * num];
-            _idxArys = new uint[IDX_PER_CUBE * num];
+            vertArys = new float[VERT_PER_CUBE * num];
+            texArys = new float[TEX_PER_CUBE * num];
+            idxArys = new uint[IDX_PER_CUBE * num];
 
             float xr = 0.5f;
             float yr = 0.5f;
@@ -239,105 +239,105 @@ namespace cubeTest_OpenTK
                     for (float z = zs * zd; z <= zm * zd; z += zd) {
 
                         // 0
-                        _vertArys[vi++] = x - xr;
-                        _vertArys[vi++] = y - yr;
-                        _vertArys[vi++] = z + zr;
-                        _texArys[ti++] = texBaseX + texUnitX * 2 + texUnitY * 2;
-                        _texArys[ti++] = texBaseY + texUnitY;
+                        vertArys[vi++] = x - xr;
+                        vertArys[vi++] = y - yr;
+                        vertArys[vi++] = z + zr;
+                        texArys[ti++] = texBaseX + texUnitX * 2 + texUnitY * 2;
+                        texArys[ti++] = texBaseY + texUnitY;
                         // 1
-                        _vertArys[vi++] = x + xr;
-                        _vertArys[vi++] = y - yr;
-                        _vertArys[vi++] = z + zr;
-                        _texArys[ti++] = texBaseX + texUnitX * 3 + texUnitY * 2;
-                        _texArys[ti++] = texBaseY + texUnitY;
+                        vertArys[vi++] = x + xr;
+                        vertArys[vi++] = y - yr;
+                        vertArys[vi++] = z + zr;
+                        texArys[ti++] = texBaseX + texUnitX * 3 + texUnitY * 2;
+                        texArys[ti++] = texBaseY + texUnitY;
                         // 2
-                        _vertArys[vi++] = x - xr;
-                        _vertArys[vi++] = y + yr;
-                        _vertArys[vi++] = z + zr;
-                        _texArys[ti++] = texBaseX + texUnitX * 2 + texUnitY * 2;
-                        _texArys[ti++] = texBaseY;
+                        vertArys[vi++] = x - xr;
+                        vertArys[vi++] = y + yr;
+                        vertArys[vi++] = z + zr;
+                        texArys[ti++] = texBaseX + texUnitX * 2 + texUnitY * 2;
+                        texArys[ti++] = texBaseY;
                         // 3
-                        _vertArys[vi++] = x + xr;
-                        _vertArys[vi++] = y + yr;
-                        _vertArys[vi++] = z + zr;
-                        _texArys[ti++] = texBaseX + texUnitX * 3 + texUnitY * 2;
-                        _texArys[ti++] = texBaseY;
+                        vertArys[vi++] = x + xr;
+                        vertArys[vi++] = y + yr;
+                        vertArys[vi++] = z + zr;
+                        texArys[ti++] = texBaseX + texUnitX * 3 + texUnitY * 2;
+                        texArys[ti++] = texBaseY;
                         // 4
-                        _vertArys[vi++] = x - xr;
-                        _vertArys[vi++] = y - yr;
-                        _vertArys[vi++] = z - zr;
-                        _texArys[ti++] = texBaseX + texUnitX * 2 + texUnitY * 2;
-                        _texArys[ti++] = texBaseY + texUnitY + texUnitZ;
+                        vertArys[vi++] = x - xr;
+                        vertArys[vi++] = y - yr;
+                        vertArys[vi++] = z - zr;
+                        texArys[ti++] = texBaseX + texUnitX * 2 + texUnitY * 2;
+                        texArys[ti++] = texBaseY + texUnitY + texUnitZ;
                         // 5
-                        _vertArys[vi++] = x - xr;
-                        _vertArys[vi++] = y + yr;
-                        _vertArys[vi++] = z + zr;
-                        _texArys[ti++] = texBaseX + texUnitX * 2 + texUnitY;
-                        _texArys[ti++] = texBaseY + texUnitY;
+                        vertArys[vi++] = x - xr;
+                        vertArys[vi++] = y + yr;
+                        vertArys[vi++] = z + zr;
+                        texArys[ti++] = texBaseX + texUnitX * 2 + texUnitY;
+                        texArys[ti++] = texBaseY + texUnitY;
                         // 6
-                        _vertArys[vi++] = x - xr;
-                        _vertArys[vi++] = y + yr;
-                        _vertArys[vi++] = z - zr;
-                        _texArys[ti++] = texBaseX + texUnitX * 2 + texUnitY;
-                        _texArys[ti++] = texBaseY + texUnitY + texUnitZ;
+                        vertArys[vi++] = x - xr;
+                        vertArys[vi++] = y + yr;
+                        vertArys[vi++] = z - zr;
+                        texArys[ti++] = texBaseX + texUnitX * 2 + texUnitY;
+                        texArys[ti++] = texBaseY + texUnitY + texUnitZ;
                         // 7
-                        _vertArys[vi++] = x + xr;
-                        _vertArys[vi++] = y + yr;
-                        _vertArys[vi++] = z + zr;
-                        _texArys[ti++] = texBaseX + texUnitX + texUnitY;
-                        _texArys[ti++] = texBaseY + texUnitY;
+                        vertArys[vi++] = x + xr;
+                        vertArys[vi++] = y + yr;
+                        vertArys[vi++] = z + zr;
+                        texArys[ti++] = texBaseX + texUnitX + texUnitY;
+                        texArys[ti++] = texBaseY + texUnitY;
                         // 8
-                        _vertArys[vi++] = x + xr;
-                        _vertArys[vi++] = y + yr;
-                        _vertArys[vi++] = z - zr;
-                        _texArys[ti++] = texBaseX + texUnitX + texUnitY;
-                        _texArys[ti++] = texBaseY + texUnitY + texUnitZ;
+                        vertArys[vi++] = x + xr;
+                        vertArys[vi++] = y + yr;
+                        vertArys[vi++] = z - zr;
+                        texArys[ti++] = texBaseX + texUnitX + texUnitY;
+                        texArys[ti++] = texBaseY + texUnitY + texUnitZ;
                         // 9
-                        _vertArys[vi++] = x + xr;
-                        _vertArys[vi++] = y - yr;
-                        _vertArys[vi++] = z + zr;
-                        _texArys[ti++] = texBaseX + texUnitX;
-                        _texArys[ti++] = texBaseY + texUnitY;
+                        vertArys[vi++] = x + xr;
+                        vertArys[vi++] = y - yr;
+                        vertArys[vi++] = z + zr;
+                        texArys[ti++] = texBaseX + texUnitX;
+                        texArys[ti++] = texBaseY + texUnitY;
                         // 10
-                        _vertArys[vi++] = x + xr;
-                        _vertArys[vi++] = y - yr;
-                        _vertArys[vi++] = z - zr;
-                        _texArys[ti++] = texBaseX + texUnitX;
-                        _texArys[ti++] = texBaseY + texUnitY + texUnitZ;
+                        vertArys[vi++] = x + xr;
+                        vertArys[vi++] = y - yr;
+                        vertArys[vi++] = z - zr;
+                        texArys[ti++] = texBaseX + texUnitX;
+                        texArys[ti++] = texBaseY + texUnitY + texUnitZ;
                         // 11
-                        _vertArys[vi++] = x - xr;
-                        _vertArys[vi++] = y - yr;
-                        _vertArys[vi++] = z - zr;
-                        _texArys[ti++] = texBaseX;
-                        _texArys[ti++] = texBaseY + texUnitY + texUnitZ;
+                        vertArys[vi++] = x - xr;
+                        vertArys[vi++] = y - yr;
+                        vertArys[vi++] = z - zr;
+                        texArys[ti++] = texBaseX;
+                        texArys[ti++] = texBaseY + texUnitY + texUnitZ;
                         // 12
-                        _vertArys[vi++] = x + xr;
-                        _vertArys[vi++] = y + yr;
-                        _vertArys[vi++] = z - zr;
-                        _texArys[ti++] = texBaseX + texUnitX;
-                        _texArys[ti++] = texBaseY + texUnitY * 2 + texUnitZ;
+                        vertArys[vi++] = x + xr;
+                        vertArys[vi++] = y + yr;
+                        vertArys[vi++] = z - zr;
+                        texArys[ti++] = texBaseX + texUnitX;
+                        texArys[ti++] = texBaseY + texUnitY * 2 + texUnitZ;
                         // 13
-                        _vertArys[vi++] = x - xr;
-                        _vertArys[vi++] = y + yr;
-                        _vertArys[vi++] = z - zr;
-                        _texArys[ti++] = texBaseX;
-                        _texArys[ti++] = texBaseY + texUnitY * 2 + texUnitZ;
+                        vertArys[vi++] = x - xr;
+                        vertArys[vi++] = y + yr;
+                        vertArys[vi++] = z - zr;
+                        texArys[ti++] = texBaseX;
+                        texArys[ti++] = texBaseY + texUnitY * 2 + texUnitZ;
 
-                        _idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 3);
-                        _idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 2);
-                        _idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 1);
-                        _idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 0);
-                        _idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 4);
-                        _idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 5);
-                        _idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 6);
-                        _idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 7);
-                        _idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 8);
-                        _idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 9);
-                        _idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 10);
-                        _idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 11);
-                        _idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 12);
-                        _idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 13);
-                        _idxArys[ii++] = UInt32.MaxValue;   // primitive restart
+                        idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 3);
+                        idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 2);
+                        idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 1);
+                        idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 0);
+                        idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 4);
+                        idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 5);
+                        idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 6);
+                        idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 7);
+                        idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 8);
+                        idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 9);
+                        idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 10);
+                        idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 11);
+                        idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 12);
+                        idxArys[ii++] = (uint)(count * (IDX_PER_CUBE - 1) + 13);
+                        idxArys[ii++] = UInt32.MaxValue;   // primitive restart
 
                         count++;
                     }
