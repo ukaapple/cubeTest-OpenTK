@@ -226,7 +226,7 @@ namespace cubeTest_OpenTK
             const int VERT_PER_CUBE = 42;
             const int TEX_PER_CUBE = 28;
             const int POS_PER_CUBE = 3;
-            const int IDX_PER_CUBE = 15;
+            const int IDX_PER_CUBE = 14;
 
             long memorySize = (VERT_PER_CUBE + TEX_PER_CUBE + POS_PER_CUBE * num) * System.Runtime.InteropServices.Marshal.SizeOf(default(float))
                             + IDX_PER_CUBE * System.Runtime.InteropServices.Marshal.SizeOf(default(uint));
@@ -363,7 +363,7 @@ namespace cubeTest_OpenTK
             idxArys[ii++] = 11;
             idxArys[ii++] = 12;
             idxArys[ii++] = 13;
-            idxArys[ii++] = UInt32.MaxValue;
+            //idxArys[ii++] = UInt32.MaxValue;
 
             for (float xp = xs * xd; xp <= xm * xd; xp+= xd) {
                 for (float yp = ys * yd; yp <= ym * yd; yp+= yd) {
