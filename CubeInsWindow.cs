@@ -363,7 +363,6 @@ namespace cubeTest_OpenTK
             idxArys[ii++] = 11;
             idxArys[ii++] = 12;
             idxArys[ii++] = 13;
-            //idxArys[ii++] = UInt32.MaxValue;
 
             for (float xp = xs * xd; xp <= xm * xd; xp+= xd) {
                 for (float yp = ys * yd; yp <= ym * yd; yp+= yd) {
@@ -404,7 +403,7 @@ namespace cubeTest_OpenTK
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
             // draw
-            GL.DrawElementsInstanced(PrimitiveType.TriangleStrip, _idxArys.Length - 1, DrawElementsType.UnsignedInt, IntPtr.Zero, _xBlocks * _yBlocks * _zBlocks);
+            GL.DrawElementsInstanced(PrimitiveType.TriangleStrip, _idxArys.Length, DrawElementsType.UnsignedInt, IntPtr.Zero, _xBlocks * _yBlocks * _zBlocks);
 
             SwapBuffers();
 
