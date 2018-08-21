@@ -454,7 +454,7 @@ namespace cubeTest_OpenTK
             private double _preFpsIn3Sec;
 
             public string GetFpsInfo() {
-                return $"{this._preFpsIn1Sec:F1}(1s) {this._preFpsIn3Sec:F1}(3s) {this._frameCntTotal / this._timeTotal:F1}(total)";
+                return $"{this._preFpsIn1Sec:F2}(1s) {this._preFpsIn3Sec:F2}(3s) {this._frameCntTotal / this._timeTotal:F2}(total)";
             }
 
             public bool Update(double time) {
